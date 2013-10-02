@@ -12,30 +12,15 @@ namespace INB374
 {
     class Constants
     {
-        public static string customerEndpoint { set; get; }
-        public static string customerCountEndpoint { set; get; }
-        private static string test = "test";
-
-        public static string Test
-        {
-            get { return Constants.test; }
-            set { Constants.test = value; }
-        }
-
-
-        static Constants()
-        {
-            #if PRD
-                customerEndpoint = "QUT";
-                customerCountEndpoint = "QUT";
-            #endif
-            #if DEBUG
-                customerEndpoint = "http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/";
-                customerCountEndpoint = "http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/count";
-            #endif
-        }
-
-
-
+        #if PRD
+            public const string CUSTOMER_ENDPOINT = "QUT"; 
+            public const string CUSTOMER_COUNT_ENDPOINT = "QUT";
+            public const string PRODUCT_ENDPOINT = "QUT";
+        #endif
+        #if DEBUG
+            public const string CUSTOMER_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/"; 
+            public const string CUSTOMER_COUNT_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/count";
+            public const string PRODUCT_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.products";
+        #endif
     }
 }

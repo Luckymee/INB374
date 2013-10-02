@@ -18,7 +18,7 @@ namespace INB374
         public Form1()
         {
             InitializeComponent();
-            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest("http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/count")) + 1;
+            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
             customerNumber.Text = custNum.ToString();
         }
 
@@ -29,7 +29,7 @@ namespace INB374
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Determine next appropriate customer number
+            // Build Customer object
             Customer customer = new Customer();
             customer.customerNumber = customerNumber.Text;
             customer.customerName = customerName.Text;
@@ -40,23 +40,23 @@ namespace INB374
             customer.country = country.Text;
             customer.postCode = postCode.Text;
 
-            Constants.Test = "12";
+            // Create XML from customer object.
+            CustomerRestController.postXML(Constants.CUSTOMER_ENDPOINT, CustomerRestController.createCustomerXML(customer));
 
-            MessageBox.Show(Constants.customerEndpoint);
-
-            CustomerRestController.postXML(Constants.customerEndpoint, CustomerRestController.createCustomerXML(customer));
-
-            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest("http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/count")) + 1;
+            // Determine next appropriate customer number
+            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
             customerNumber.Text = custNum.ToString();
         }
 
         private void customerName_Leave(object sender, EventArgs e)
         {
+            /*
             string valEx = "1";
             if (!Regex.IsMatch(this.customerName.Text.Trim(), valEx))
             {
                 MessageBox.Show("Wrong!");
             }
+            */
         }
 
         private void Form1_Load(object sender, EventArgs e)

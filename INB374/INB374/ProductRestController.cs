@@ -12,8 +12,8 @@ namespace INB374
     {
         public static string CreateRequest(string queryString)
         {
-            string urlRequest = "http://localhost:8080/n8510873CustomerDB/webresources/entities.products";
-
+            string urlRequest = Constants.PRODUCT_ENDPOINT;
+            
             return (urlRequest);
         }
 
@@ -40,6 +40,12 @@ namespace INB374
             }
         }
 
+        /**
+         * Process response
+         * 
+         *@param response - XMLDocument: built from product database respone.
+         *@return products - Tuple: Contains lists of product variables.
+         */
         public static Tuple<List<string>, List<string>, List<string>, List<string>> ProcessResponse(XmlDocument response)
         {
             XmlNodeList name = response.SelectNodes("//products");
