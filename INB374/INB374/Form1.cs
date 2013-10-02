@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace INB374
 {
@@ -61,6 +62,30 @@ namespace INB374
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabPage2_Enter(object sender, EventArgs e)
+        {
+            List<string> test = new List<string>();
+
+            string request = ProductRestController.CreateRequest("test");
+            XmlDocument response = ProductRestController.makeRequest(request);
+
+            var helper = ProductRestController.ProcessResponse(response);
+
+            for (int i = 0; i < helper.Item4.Count; i++)
+            {
+                test.Add(String.Format("ProductCode: {0}, ProductName: {1}, QuantitiyInStock: {2}, MRSP: {3}", helper.Item1[i], helper.Item2[i], helper.Item3[i], helper.Item4[i]));
+            }
+
+            comboBox1.DataSource = test;
+
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1.Text = comboBox1.Text;
         }
     }
 }
