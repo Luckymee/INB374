@@ -10,10 +10,18 @@ namespace INB374
 {
     class CustomerRestController
     {
+        /*
+         * creatCustomerXML
+         * Builds vaild XMLDocument from customer object, added by sales person.
+         * 
+         * @param customer - Customer: Object containing information about a new customer.
+         */
         public static XmlDocument createCustomerXML(Customer customer)
         {
+            // Update fields to assure XML validity.
             nullChecker(customer);
 
+            // Create XML
             XmlDocument customerRecord = new XmlDocument();
             XmlElement el = (XmlElement)customerRecord.AppendChild(customerRecord.CreateElement("customers"));
             el.AppendChild(customerRecord.CreateElement("addressLine1")).InnerText = customer.address;
@@ -27,7 +35,13 @@ namespace INB374
 
             return (customerRecord);
         }
-
+        /*
+         * postXML
+         * Create post webrequst to transfer data to the web service.
+         * 
+         * @param posturl - string: Customer endpoint.
+         * @param xmlDoc - XmlDocument: valid xml document built from customer object.
+         */
         public static string postXML(string postURL, XmlDocument xmlDoc)
         {
             // Create the request
@@ -65,6 +79,12 @@ namespace INB374
 
         }
 
+        /*
+         * nullChecker
+         * Appends N/A to any field which was left blank in the creation process.
+         * 
+         * @param customer - Customer: Customer object to be altered based on black fields.
+         */
         private static void nullChecker(Customer customer)
         {
             customer.address =          (string.IsNullOrEmpty(customer.address))        ? "N/A" : customer.address;
@@ -77,6 +97,12 @@ namespace INB374
             customer.postCode =         (string.IsNullOrEmpty(customer.postCode))       ? "N/A" : customer.postCode;
         }
 
+        /*
+         * Make Request
+         * Checks url to obtain number of customers. Used to increment customer number, for entry to DB.
+         * 
+         * @param requestURL - string: Customer count endpoint.
+         */
         public static string makeRequest(string requestURL)
         {
             try
@@ -85,7 +111,6 @@ namespace INB374
                 string readHtml = webClient.DownloadString(requestURL);
 
                 return readHtml;
-
             }
             catch (Exception e)
             {
