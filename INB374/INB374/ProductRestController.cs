@@ -46,11 +46,21 @@ namespace INB374
          *@param response - XMLDocument: built from product database respone.
          *@return products - Tuple: Contains lists of product variables.
          */
-        public static Tuple<List<string>, List<string>, List<string>, List<string>> ProcessResponse(XmlDocument response)
+        public static List<Product> ProcessResponse(XmlDocument response)
         {
             XmlNodeList name = response.SelectNodes("//products");
+            List<Product> products= new List<Product>();
 
-            List<string> productName = new List<string>();
+            foreach (XmlNode xn in name) {
+                Product tempProduct = new Product();
+                tempProduct.productName = xn["productName"].InnerText;
+                tempProduct.productCode = xn["productCode"].InnerText;
+                tempProduct.quantityInStock = xn["quantityInStock"].InnerText;
+                tempProduct.msrp = xn["msrp"].InnerText;
+                products.Add(tempProduct);
+            }
+
+            /*List<string> productName = new List<string>();
             List<string> productCode = new List<string>();
             List<string> quantityInStock = new List<string>();
             List<string> MSRP = new List<string>();
@@ -66,6 +76,7 @@ namespace INB374
             // This is some black magic. Create something like a struct, passing a tuple full of lists, full of product variables.
             // Reqiures .NET 4.0
             var products = Tuple.Create(productCode, productName, quantityInStock, MSRP);
+            */
 
             return (products);
         }

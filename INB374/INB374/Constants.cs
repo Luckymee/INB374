@@ -21,6 +21,8 @@ namespace INB374
             public const string CUSTOMER_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/"; 
             public const string CUSTOMER_COUNT_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.customers/count";
             public const string PRODUCT_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.products";
+            public const string ORDER_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.orders";
+            public const string ORDERDETAILS_ENDPOINT = "http://localhost:8080/n8510873CustomerDB/webresources/entities.orderdetails";
         #endif
     }
 }
