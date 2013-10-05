@@ -78,7 +78,7 @@ public class OrderdetailsFacadeREST extends AbstractFacade<Orderdetails> {
 
     @GET
     @Path("{id}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/xml"})
     public Orderdetails find(@PathParam("id") PathSegment id) {
         entities.OrderdetailsPK key = getPrimaryKey(id);
         return super.find(key);
@@ -86,14 +86,14 @@ public class OrderdetailsFacadeREST extends AbstractFacade<Orderdetails> {
 
     @GET
     @Override
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/xml"})
     public List<Orderdetails> findAll() {
         return super.findAll();
     }
 
     @GET
     @Path("{from}/{to}")
-    @Produces({"application/xml", "application/json"})
+    @Produces({"application/xml"})
     public List<Orderdetails> findRange(@PathParam("from") Integer from, @PathParam("to") Integer to) {
         return super.findRange(new int[]{from, to});
     }
