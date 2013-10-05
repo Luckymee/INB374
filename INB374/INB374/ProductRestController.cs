@@ -60,24 +60,6 @@ namespace INB374
                 products.Add(tempProduct);
             }
 
-            /*List<string> productName = new List<string>();
-            List<string> productCode = new List<string>();
-            List<string> quantityInStock = new List<string>();
-            List<string> MSRP = new List<string>();
-
-            foreach (XmlNode xn in name)
-            {
-               productName.Add(xn["productName"].InnerText);
-               productCode.Add(xn["productCode"].InnerText);
-               quantityInStock.Add(xn["quantityInStock"].InnerText);
-               MSRP.Add(xn["msrp"].InnerText);
-            }
-
-            // This is some black magic. Create something like a struct, passing a tuple full of lists, full of product variables.
-            // Reqiures .NET 4.0
-            var products = Tuple.Create(productCode, productName, quantityInStock, MSRP);
-            */
-
             return (products);
         }
     }

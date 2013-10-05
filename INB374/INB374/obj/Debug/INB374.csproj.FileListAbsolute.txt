@@ -24,3 +24,6 @@ C:\Users\Joe\Documents\GitHub\INB374\INB374\INB374\obj\Debug\INB374.csprojResolv
 C:\Users\Joe\Documents\GitHub\INB374\INB374\INB374\obj\Debug\INB374.Form1.resources
 C:\Users\Joe\Documents\GitHub\INB374\INB374\INB374\obj\Debug\INB374.Properties.Resources.resources
 C:\Users\Joe\Documents\GitHub\INB374\INB374\INB374\obj\Debug\INB374.csproj.GenerateResource.Cache
+C:\Users\Joe\Documents\Uni\INB374\asgn2\INB374\bin\Debug\INB374.exe.config
+C:\Users\Joe\Documents\Uni\INB374\asgn2\INB374\obj\Debug\INB374.exe
+C:\Users\Joe\Documents\Uni\INB374\asgn2\INB374\obj\Debug\INB374.pdb

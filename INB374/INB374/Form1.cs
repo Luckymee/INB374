@@ -15,8 +15,6 @@ namespace INB374
     public partial class Form1 : Form
     {
         private int custNum;
-        /* I dont think using global variables is a very good idea but is just so
-         difficult to not when working with a gui*/
         private List<ComboBox> productSelectBoxes = new List<ComboBox>();
         private List<Label> productSelectLabels = new List<Label>();
         private List<Product> productsSelected = new List<Product>();
@@ -32,6 +30,8 @@ namespace INB374
             InitializeComponent();
             this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
             customerNumber.Text = custNum.ToString();
+            tabControl1.TabPages[2].Text = "Order Summary";
+            tabControl1.TabPages[2].Enabled = false;
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace INB374
             CustomerRestController.postXML(Constants.CUSTOMER_ENDPOINT, CustomerRestController.createCustomerXML(customer));
 
             // Determine next appropriate customer number
-            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
+            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT));
             customerNumber.Text = custNum.ToString();
         }
 
@@ -119,6 +119,9 @@ namespace INB374
             comboBox2.DataSource = numberItemsValues;
             comboBox2.SelectedIndex = 0;
 
+        }
+
+        private void tabPage3_Enter(object sender, EventArgs e) {
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) {
@@ -211,7 +214,7 @@ namespace INB374
 
                 nameLabels[i].Text = productsSelected[i].productName;
                 priceTextBoxes[i].Text = productsSelected[i].msrp;
-                waitingLabels[i].Text = "Not Implemented"; //fix once implemented
+                waitingLabels[i].Text = "N/A"; //fix once implemented
                 quantityBoxes[i].DataSource = quantityItemsValues;
                 quantityBoxes[i].BindingContext = new BindingContext();
                 updateInStockTextBox(quantityBoxes[i]);
@@ -226,6 +229,7 @@ namespace INB374
             }
 
             tabControl1.SelectedIndex = 2; //go to tab 3
+            tabControl1.TabPages[2].Enabled = true;
         }
 
         private void updateInStockTextBox(ComboBox comboBox) {
@@ -256,6 +260,9 @@ namespace INB374
                     }
             }
 
+            calculateOrderTotal();
+            priceTextBoxes[selectedQuantityIndex].Text = (double.Parse(productsSelected[selectedQuantityIndex].msrp) * double.Parse(quantityBoxes[selectedQuantityIndex].SelectedValue.ToString())).ToString();
+
             stockRemaining = int.Parse(productsSelected[selectedQuantityIndex].quantityInStock) - int.Parse(quantityBoxes[selectedQuantityIndex].SelectedValue.ToString());
 
             if (stockRemaining < 0) {
@@ -263,6 +270,28 @@ namespace INB374
             }
             else {
                 stockLabels[selectedQuantityIndex].Text = "Yes";
+            }
+        }
+
+        private void calculateOrderTotal() {
+            double total = 0;
+            double ignore;
+
+            for (int i = 0; i < productsSelected.Count; i++) {
+                Debug.WriteLine(priceTextBoxes[i].Text);
+                if (double.TryParse(priceTextBoxes[i].Text, out ignore)) {
+                    total += double.Parse(priceTextBoxes[i].Text);
+                }
+            }
+
+            label37.Text = "$" + total;
+        }
+
+        private void confirmOrder_Click(object sender, EventArgs e) {
+            OrderController.addOrder(OrderController.createOrder(custNum.ToString(), DateTime.Now.ToString("d/M/yyyy"), "25/10/2013", "processing", "None"));
+
+            for (int i = 0; i < productsSelected.Count; i++) {
+                OrderController.addOrderDetails(OrderController.createOrderDetails(productsSelected[i].productCode, quantityBoxes[i].SelectedValue.ToString(), priceTextBoxes[i].Text));
             }
         }
 
