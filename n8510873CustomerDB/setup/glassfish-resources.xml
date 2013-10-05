@@ -6,7 +6,7 @@
         <property name="portNumber" value="3306"/>
         <property name="databaseName" value="n8510873"/>
         <property name="User" value="n8510873"/>
-        <property name="Password" value=""/>
+        <property name="Password" value="12345"/>
         <property name="URL" value="jdbc:mysql://fastws.qut.edu.au:3306/n8510873"/>
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
     </jdbc-connection-pool>
