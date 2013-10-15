@@ -100,6 +100,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.customerAddStatus = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -457,6 +458,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label39);
             this.tabPage3.Controls.Add(this.confirmOrder);
             this.tabPage3.Controls.Add(this.label37);
             this.tabPage3.Controls.Add(this.label36);
@@ -801,9 +803,9 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(21, 16);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(205, 31);
+            this.label15.Size = new System.Drawing.Size(213, 31);
             this.label15.TabIndex = 0;
-            this.label15.Text = "Order Summary";
+            this.label15.Text = "Order Summary:";
             // 
             // label38
             // 
@@ -821,6 +823,14 @@
             this.customerAddStatus.Name = "customerAddStatus";
             this.customerAddStatus.Size = new System.Drawing.Size(0, 13);
             this.customerAddStatus.TabIndex = 17;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(254, 29);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(0, 13);
+            this.label39.TabIndex = 34;
             // 
             // Form1
             // 
@@ -916,6 +926,7 @@
         private System.Windows.Forms.ComboBox customerContextBox;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label customerAddStatus;
+        private System.Windows.Forms.Label label39;
     }
 }
 

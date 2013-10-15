@@ -156,7 +156,7 @@ namespace INB374
 
             customerContextBox.DataSource = customers;
             customerContextBox.SelectedIndex = 0;
-
+ 
             comboBox2.DataSource = numberItemsValues;
             comboBox2.SelectedIndex = 0;
 
@@ -201,13 +201,16 @@ namespace INB374
          */
         private void updateCustomerInContext()
         {
-            int numberSelected = 1;
             if (customerContextBox.SelectedValue != null)
             {
-                numberSelected = int.Parse(customerContextBox.SelectedValue.ToString());
+                customerInContext = int.Parse(customerContextBox.SelectedValue.ToString());
+            }
+            else
+            {
+                customerInContext = 0;
             }
 
-            customerInContext = numberSelected;
+            
         }
 
         private void ProcessOrder_Click(object sender, EventArgs e) {
@@ -287,6 +290,7 @@ namespace INB374
 
             tabControl1.SelectedIndex = 2; //go to tab 3
             tabControl1.TabPages[2].Enabled = true;
+            label39.Text = String.Format("Customer: {0}",customerInContext.ToString());
         }
 
         private void updateInStockTextBox(ComboBox comboBox) {
