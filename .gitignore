@@ -160,3 +160,18 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+
+# C SHARP
+[Oo]bj
+[Bb]in
+*.user
+*.suo
+*.[Cc]ache
+*.bak
+*.ncb
+*.log 
+*.DS_Store
+[Tt]humbs.db 
+_ReSharper.*
+*.resharper
+Ankh.NoLoad
