@@ -15,6 +15,7 @@ namespace INB374
     public partial class Form1 : Form
     {
         private int custNum;
+        private int customerInContext;
         private List<ComboBox> productSelectBoxes = new List<ComboBox>();
         private List<Label> productSelectLabels = new List<Label>();
         private List<Product> productsSelected = new List<Product>();
@@ -52,11 +53,41 @@ namespace INB374
             customer.country = country.Text;
             customer.postCode = postCode.Text;
 
-            // Create XML from customer object.
-            CustomerRestController.postXML(Constants.CUSTOMER_ENDPOINT, CustomerRestController.createCustomerXML(customer));
+            // Require name.
+            if (customerName.Text == string.Empty)
+            {
+                MessageBox.Show("Please enter a customer name!");
+                return;
+            }
 
+            // Check for numerics in Name.
+            string valEx = "^[A-Za-z]+$";
+            if (!Regex.IsMatch(this.customerName.Text.Trim(), valEx))
+            {
+                MessageBox.Show("Please enter a name, without numerical characters.");
+                return;
+            }
+
+            // Determine if customer added succesfully.
+            // Null if not
+            try
+            {
+                // Create XML from customer object.
+                string customerToAdd = CustomerRestController.postXML(Constants.CUSTOMER_ENDPOINT, CustomerRestController.createCustomerXML(customer));
+                if (customerToAdd == null)
+                {
+                    throw new ArgumentNullException();
+                }
+               
+                customerAddStatus.Text = String.Format("Added Customer: {0} to database.", customer.customerNumber);
+            }
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception.Message);
+                customerAddStatus.Text = "Failed to add Customer to database.";
+            }
             // Determine next appropriate customer number
-            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT));
+            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
             customerNumber.Text = custNum.ToString();
         }
 
@@ -80,6 +111,8 @@ namespace INB374
         {
             List<string> productDataSource = new List<string>();
             List<string> numberItemsValues= new List<string>();
+            List<string> customers = new List<string>();
+            int numCustomers = int.Parse(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT));
             productSelectBoxes.Clear();
             productSelectLabels.Clear();
 
@@ -105,6 +138,11 @@ namespace INB374
                 productDataSource.Add(String.Format("ProductCode: {0}, ProductName: {1}, QuantitiyInStock: {2}, MRSP: {3}", productList[i].productCode, productList[i].productName, productList[i].quantityInStock, productList[i].msrp));
             }
 
+            for (int i = 1; i < numCustomers + 1; ++i)
+            {
+                customers.Add((i).ToString());
+            }
+
             for (int i = 0; i < productSelectBoxes.Count; i++) { //add values to drop down lists
                 numberItemsValues.Add((i + 1).ToString());
                 productSelectBoxes[i].DataSource = productDataSource;
@@ -115,6 +153,9 @@ namespace INB374
                 productSelectBoxes[i].Hide();
                 productSelectLabels[i].Hide();
             }
+
+            customerContextBox.DataSource = customers;
+            customerContextBox.SelectedIndex = 0;
 
             comboBox2.DataSource = numberItemsValues;
             comboBox2.SelectedIndex = 0;
@@ -151,6 +192,22 @@ namespace INB374
             for (int i = 0; i < numberSelected; i++) {
                 textBox1.Text += productSelectBoxes[i].Text + "\r\n";
             }
+        }
+
+        /*
+         * updateCustomerInContext()
+         * Method for controlling which customer to attach orders to.
+         * 
+         */
+        private void updateCustomerInContext()
+        {
+            int numberSelected = 1;
+            if (customerContextBox.SelectedValue != null)
+            {
+                numberSelected = int.Parse(customerContextBox.SelectedValue.ToString());
+            }
+
+            customerInContext = numberSelected;
         }
 
         private void ProcessOrder_Click(object sender, EventArgs e) {
@@ -288,7 +345,7 @@ namespace INB374
         }
 
         private void confirmOrder_Click(object sender, EventArgs e) {
-            OrderController.addOrder(OrderController.createOrder(custNum.ToString(), DateTime.Now.ToString("d/M/yyyy"), "25/10/2013", "processing", "None"));
+            OrderController.addOrder(OrderController.createOrder(customerInContext.ToString(), DateTime.Now.ToString("d/M/yyyy"), "25/10/2013", "processing", "None"));
 
             for (int i = 0; i < productsSelected.Count; i++) {
                 OrderController.addOrderDetails(OrderController.createOrderDetails(productsSelected[i].productCode, quantityBoxes[i].SelectedValue.ToString(), priceTextBoxes[i].Text));
@@ -335,6 +392,11 @@ namespace INB374
 
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e) {
             updateSummaryTextBox();
+        }
+
+        private void customerContextBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            updateCustomerInContext();
         }
     }
 }

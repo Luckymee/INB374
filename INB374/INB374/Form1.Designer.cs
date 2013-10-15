@@ -48,6 +48,7 @@
             this.customerNumber = new System.Windows.Forms.TextBox();
             this.customerName = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.customerContextBox = new System.Windows.Forms.ComboBox();
             this.ProcessOrder = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.confirmOrder = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -96,7 +98,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.confirmOrder = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.customerAddStatus = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -117,6 +120,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.customerAddStatus);
             this.tabPage1.Controls.Add(this.create);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label7);
@@ -285,6 +289,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label38);
+            this.tabPage2.Controls.Add(this.customerContextBox);
             this.tabPage2.Controls.Add(this.ProcessOrder);
             this.tabPage2.Controls.Add(this.label14);
             this.tabPage2.Controls.Add(this.label13);
@@ -304,9 +310,18 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(613, 346);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Product Select";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
+            // 
+            // customerContextBox
+            // 
+            this.customerContextBox.FormattingEnabled = true;
+            this.customerContextBox.Location = new System.Drawing.Point(452, 14);
+            this.customerContextBox.Name = "customerContextBox";
+            this.customerContextBox.Size = new System.Drawing.Size(121, 21);
+            this.customerContextBox.TabIndex = 14;
+            this.customerContextBox.SelectedIndexChanged += new System.EventHandler(this.customerContextBox_SelectedIndexChanged);
             // 
             // ProcessOrder
             // 
@@ -481,8 +496,18 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(613, 346);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "Order Confirm";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // confirmOrder
+            // 
+            this.confirmOrder.Location = new System.Drawing.Point(479, 305);
+            this.confirmOrder.Name = "confirmOrder";
+            this.confirmOrder.Size = new System.Drawing.Size(115, 23);
+            this.confirmOrder.TabIndex = 33;
+            this.confirmOrder.Text = "Confirm Order";
+            this.confirmOrder.UseVisualStyleBackColor = true;
+            this.confirmOrder.Click += new System.EventHandler(this.confirmOrder_Click);
             // 
             // label37
             // 
@@ -491,7 +516,7 @@
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(57, 17);
             this.label37.TabIndex = 32;
-            this.label37.Text = "label37";
+            this.label37.Text = "N/A";
             this.label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label36
@@ -780,15 +805,22 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "Order Summary";
             // 
-            // confirmOrder
+            // label38
             // 
-            this.confirmOrder.Location = new System.Drawing.Point(479, 305);
-            this.confirmOrder.Name = "confirmOrder";
-            this.confirmOrder.Size = new System.Drawing.Size(115, 23);
-            this.confirmOrder.TabIndex = 33;
-            this.confirmOrder.Text = "Confirm Order";
-            this.confirmOrder.UseVisualStyleBackColor = true;
-            this.confirmOrder.Click += new System.EventHandler(this.confirmOrder_Click);
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(388, 17);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(51, 13);
+            this.label38.TabIndex = 15;
+            this.label38.Text = "Customer";
+            // 
+            // customerAddStatus
+            // 
+            this.customerAddStatus.AutoSize = true;
+            this.customerAddStatus.Location = new System.Drawing.Point(359, 152);
+            this.customerAddStatus.Name = "customerAddStatus";
+            this.customerAddStatus.Size = new System.Drawing.Size(0, 13);
+            this.customerAddStatus.TabIndex = 17;
             // 
             // Form1
             // 
@@ -881,6 +913,9 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Button confirmOrder;
+        private System.Windows.Forms.ComboBox customerContextBox;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label customerAddStatus;
     }
 }
 
