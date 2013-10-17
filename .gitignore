@@ -1,7 +1,9 @@
 /n8510873CustomerDB/nbproject/private/
 /n8510873CustomerDB/build/
 /n8510873CustomerDB/dist/
-
+/Documentation/html/
+/Documentation/Interaction_Diagrams/
+/Documentation/latex/
 *.class
 
 # Package Files #
