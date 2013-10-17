@@ -10,11 +10,34 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 
+/** \mainpage Slightly Over Price Appliances
+ *
+ * \section intro_sec Introduction
+ *
+ * This is the introduction.
+ *
+ * \section Info Information
+ *
+ * \subsection step1 Step 1: Sub Information
+ *
+ * etc...
+ */
+
+
+
+
 namespace INB374
 {
-    public partial class Form1 : Form
+    /**
+     * Primary client for Slightly Overpriced Appliances.
+     * This class encapsulates all of the form logic and is the main point of driving,
+     * for all user intraction.
+     */
+    public partial class SOA : Form
     {
+        /** Stores customer number. */
         private int custNum;
+        /** Stores selected customer for use in ordering */
         private int customerInContext;
         private List<ComboBox> productSelectBoxes = new List<ComboBox>();
         private List<Label> productSelectLabels = new List<Label>();
@@ -26,7 +49,8 @@ namespace INB374
         private List<Label> waitingLabels = new List<Label>();
         private List<TextBox> priceTextBoxes = new List<TextBox>();
 
-        public Form1()
+        /** Front-end client inital constructor. */
+        public SOA()
         {
             InitializeComponent();
             this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
@@ -40,7 +64,12 @@ namespace INB374
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /**
+         * Proccess' user inputed details about new customer.
+         * Building a customer object and passing it via a restful service/
+         * 
+         */
+        private void addCustomerButton_Click(object sender, EventArgs e)
         {
             // Build Customer object
             Customer customer = new Customer();
@@ -91,22 +120,16 @@ namespace INB374
             customerNumber.Text = custNum.ToString();
         }
 
-        private void customerName_Leave(object sender, EventArgs e)
-        {
-            /*
-            string valEx = "1";
-            if (!Regex.IsMatch(this.customerName.Text.Trim(), valEx))
-            {
-                MessageBox.Show("Wrong!");
-            }
-            */
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
 
+        /**
+         * Entered the order screen.
+         * Dynamically creates a selection of combo boxes filled via a service to obtain products
+         * from the database.
+         */
         private void tabPage2_Enter(object sender, EventArgs e)
         {
             List<string> productDataSource = new List<string>();
@@ -162,9 +185,17 @@ namespace INB374
 
         }
 
+        /**
+         * Entered the order confirmation screen.
+         */
         private void tabPage3_Enter(object sender, EventArgs e) {
         }
 
+       /**
+        * Number of items to select for an order.
+        * Dynamically shows or hides a set amount of comboboxes for product input,
+        * based on selected number.
+        */
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) {
             int numberSelected = int.Parse(comboBox2.SelectedValue.ToString());
 
@@ -181,6 +212,10 @@ namespace INB374
             updateSummaryTextBox();
         }
 
+        /**
+         * Updates order summary with selected items.
+         * Called via each combo box selected index method.
+         */
         private void updateSummaryTextBox() {
             int numberSelected = 1;
             textBox1.Clear();
@@ -194,8 +229,7 @@ namespace INB374
             }
         }
 
-        /*
-         * updateCustomerInContext()
+        /**
          * Method for controlling which customer to attach orders to.
          * 
          */
@@ -213,6 +247,12 @@ namespace INB374
             
         }
 
+        /**
+         * Process Order
+         * Dynamically builds a list of selected items, on the Order confirmation screen.
+         * This is to allow the sales person to choose a quantity and determine, whether the item
+         * is in stock, and what its delivery time will be.
+         */
         private void ProcessOrder_Click(object sender, EventArgs e) {
 
             List<string> quantityItemsValues = new List<string>();         
@@ -293,6 +333,9 @@ namespace INB374
             label39.Text = String.Format("Customer: {0}",customerInContext.ToString());
         }
 
+        /**
+         * TODO
+         */
         private void updateInStockTextBox(ComboBox comboBox) {
 
             int selectedQuantityIndex = 0;;
@@ -334,6 +377,10 @@ namespace INB374
             }
         }
 
+        /**
+         * Calculates the order total based on the selected items and their quanitites.
+         * Fired on 
+         */
         private void calculateOrderTotal() {
             double total = 0;
             double ignore;
@@ -357,8 +404,8 @@ namespace INB374
         }
 
         /* combo box update on change methods */
-
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e) {
+            calculateOrderTotal();
             updateInStockTextBox(comboBox7);
         }
 
@@ -401,6 +448,16 @@ namespace INB374
         private void customerContextBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateCustomerInContext();
+        }
+
+        /**
+         * Calculates the order total based on the selected items and their quanitites.
+         * Used to ensure the total is correct before confirming order. 
+         */
+        private void recalculateTotal_Click(object sender, EventArgs e)
+        {
+            //TODO Inhibit confirm order before this has been clicked.
+            calculateOrderTotal();
         }
     }
 }

@@ -49,11 +49,11 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerRestController.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="SOA.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="SOA.Designer.cs">
+      <DependentUpon>SOA.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderController.cs" />
     <Compile Include="Product.cs" />
@@ -65,8 +65,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="SOA.resx">
+      <DependentUpon>SOA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

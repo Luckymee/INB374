@@ -17,6 +17,12 @@ namespace INB374
             return (urlRequest);
         }
 
+        /**
+         * Creates an XML doc with the response from a request for a product.
+         * 
+         *@param requestURL - string: The restful url to be parsed for its response.
+         *@return xmlResponse - XmlDocument: A valid xml containing the requested products.
+         */
         public static XmlDocument makeRequest(string requestURL)
         {
             try
@@ -25,11 +31,11 @@ namespace INB374
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 
 
-                XmlDocument xmlDoc = new XmlDocument();
+                XmlDocument xmlResponse = new XmlDocument();
 
-                xmlDoc.Load(response.GetResponseStream());
+                xmlResponse.Load(response.GetResponseStream());
 
-                return (xmlDoc);
+                return (xmlResponse);
             }
             catch (Exception e)
             {
@@ -44,7 +50,7 @@ namespace INB374
          * Process response
          * 
          *@param response - XMLDocument: built from product database respone.
-         *@return products - Tuple: Contains lists of product variables.
+         *@return products - List<Product>: A list of product variables.
          */
         public static List<Product> ProcessResponse(XmlDocument response)
         {

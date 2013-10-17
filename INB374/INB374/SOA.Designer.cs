@@ -1,6 +1,6 @@
 ﻿namespace INB374
 {
-    partial class Form1
+    partial class SOA
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.customerAddStatus = new System.Windows.Forms.Label();
             this.create = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,6 +49,7 @@
             this.customerNumber = new System.Windows.Forms.TextBox();
             this.customerName = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label38 = new System.Windows.Forms.Label();
             this.customerContextBox = new System.Windows.Forms.ComboBox();
             this.ProcessOrder = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -64,6 +66,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label39 = new System.Windows.Forms.Label();
             this.confirmOrder = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -98,9 +101,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.customerAddStatus = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
+            this.recalculateTotal = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -148,6 +149,14 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // customerAddStatus
+            // 
+            this.customerAddStatus.AutoSize = true;
+            this.customerAddStatus.Location = new System.Drawing.Point(359, 152);
+            this.customerAddStatus.Name = "customerAddStatus";
+            this.customerAddStatus.Size = new System.Drawing.Size(0, 13);
+            this.customerAddStatus.TabIndex = 17;
+            // 
             // create
             // 
             this.create.Location = new System.Drawing.Point(164, 290);
@@ -156,7 +165,7 @@
             this.create.TabIndex = 16;
             this.create.Text = "Create Customer";
             this.create.UseVisualStyleBackColor = true;
-            this.create.Click += new System.EventHandler(this.button1_Click);
+            this.create.Click += new System.EventHandler(this.addCustomerButton_Click);
             // 
             // label8
             // 
@@ -286,7 +295,6 @@
             this.customerName.Name = "customerName";
             this.customerName.Size = new System.Drawing.Size(100, 20);
             this.customerName.TabIndex = 1;
-            this.customerName.Leave += new System.EventHandler(this.customerName_Leave);
             // 
             // tabPage2
             // 
@@ -315,8 +323,18 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Enter += new System.EventHandler(this.tabPage2_Enter);
             // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(388, 17);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(51, 13);
+            this.label38.TabIndex = 15;
+            this.label38.Text = "Customer";
+            // 
             // customerContextBox
             // 
+            this.customerContextBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.customerContextBox.FormattingEnabled = true;
             this.customerContextBox.Location = new System.Drawing.Point(452, 14);
             this.customerContextBox.Name = "customerContextBox";
@@ -421,6 +439,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(136, 14);
             this.comboBox2.Name = "comboBox2";
@@ -458,6 +477,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.recalculateTotal);
             this.tabPage3.Controls.Add(this.label39);
             this.tabPage3.Controls.Add(this.confirmOrder);
             this.tabPage3.Controls.Add(this.label37);
@@ -500,6 +520,14 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Order Confirm";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(254, 29);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(0, 13);
+            this.label39.TabIndex = 34;
             // 
             // confirmOrder
             // 
@@ -559,6 +587,7 @@
             // 
             // comboBox11
             // 
+            this.comboBox11.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox11.FormattingEnabled = true;
             this.comboBox11.Location = new System.Drawing.Point(457, 201);
             this.comboBox11.Name = "comboBox11";
@@ -602,6 +631,7 @@
             // 
             // comboBox10
             // 
+            this.comboBox10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox10.FormattingEnabled = true;
             this.comboBox10.Location = new System.Drawing.Point(457, 178);
             this.comboBox10.Name = "comboBox10";
@@ -645,6 +675,7 @@
             // 
             // comboBox9
             // 
+            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox9.FormattingEnabled = true;
             this.comboBox9.Location = new System.Drawing.Point(457, 153);
             this.comboBox9.Name = "comboBox9";
@@ -688,6 +719,7 @@
             // 
             // comboBox8
             // 
+            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Location = new System.Drawing.Point(457, 128);
             this.comboBox8.Name = "comboBox8";
@@ -741,6 +773,7 @@
             // 
             // comboBox7
             // 
+            this.comboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Location = new System.Drawing.Point(457, 104);
             this.comboBox7.Name = "comboBox7";
@@ -807,30 +840,15 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "Order Summary:";
             // 
-            // label38
+            // recalculateTotal
             // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(388, 17);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(51, 13);
-            this.label38.TabIndex = 15;
-            this.label38.Text = "Customer";
-            // 
-            // customerAddStatus
-            // 
-            this.customerAddStatus.AutoSize = true;
-            this.customerAddStatus.Location = new System.Drawing.Point(359, 152);
-            this.customerAddStatus.Name = "customerAddStatus";
-            this.customerAddStatus.Size = new System.Drawing.Size(0, 13);
-            this.customerAddStatus.TabIndex = 17;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(254, 29);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(0, 13);
-            this.label39.TabIndex = 34;
+            this.recalculateTotal.Location = new System.Drawing.Point(389, 271);
+            this.recalculateTotal.Name = "recalculateTotal";
+            this.recalculateTotal.Size = new System.Drawing.Size(75, 23);
+            this.recalculateTotal.TabIndex = 35;
+            this.recalculateTotal.Text = "Recalculate";
+            this.recalculateTotal.UseVisualStyleBackColor = true;
+            this.recalculateTotal.Click += new System.EventHandler(this.recalculateTotal_Click);
             // 
             // Form1
             // 
@@ -927,6 +945,7 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label customerAddStatus;
         private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Button recalculateTotal;
     }
 }
 

@@ -10,9 +10,9 @@ namespace INB374
 {
     class CustomerRestController
     {
-        /*
-         * creatCustomerXML
-         * Builds vaild XMLDocument from customer object, added by sales person.
+        /** createCustomerXML
+         * 
+         * @brief Builds vaild XMLDocument from customer object, added by sales person.
          * 
          * @param customer - Customer: Object containing information about a new customer.
          */
@@ -35,11 +35,11 @@ namespace INB374
 
             return (customerRecord);
         }
-        /*
-         * postXML
+        /** postXML
+         * 
          * Create post webrequst to transfer data to the web service.
          * 
-         * @param posturl - string: Customer endpoint.
+         * @param postURL - string: Customer endpoint.
          * @param xmlDoc - XmlDocument: valid xml document built from customer object.
          */
         public static string postXML(string postURL, XmlDocument xmlDoc)
@@ -79,7 +79,7 @@ namespace INB374
 
         }
 
-        /*
+        /**
          * nullChecker
          * Appends N/A to any field which was left blank in the creation process.
          * 
@@ -97,7 +97,7 @@ namespace INB374
             customer.postCode =         (string.IsNullOrEmpty(customer.postCode))       ? "N/A" : customer.postCode;
         }
 
-        /*
+        /**
          * Make Request
          * Checks url to obtain number of customers. Used to increment customer number, for entry to DB.
          * 
