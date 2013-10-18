@@ -17,6 +17,8 @@ namespace INB374 {
         public string quantityInStock { get; set; }
         /** Recommeded retail price. */
         public string msrp { get; set; }
+        /** Item kept in store. */
+        public bool inStore { get; set; }
 
         /** Paramterless constructor*/
         public Product() {

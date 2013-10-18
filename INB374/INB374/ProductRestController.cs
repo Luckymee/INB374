@@ -63,6 +63,7 @@ namespace INB374
                 tempProduct.productCode = xn["productCode"].InnerText;
                 tempProduct.quantityInStock = xn["quantityInStock"].InnerText;
                 tempProduct.msrp = xn["msrp"].InnerText;
+                tempProduct.inStore = Convert.ToBoolean(xn["inStore"].InnerText);
                 products.Add(tempProduct);
             }
 

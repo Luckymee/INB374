@@ -314,7 +314,7 @@ namespace INB374
 
                 nameLabels[i].Text = productsSelected[i].productName;
                 priceTextBoxes[i].Text = productsSelected[i].msrp;
-                waitingLabels[i].Text = "N/A"; //fix once implemented
+                waitingLabels[i].Text = getWaitingTime(productsSelected[i], Convert.ToInt32(productsSelected[i].quantityInStock) > 0);
                 quantityBoxes[i].DataSource = quantityItemsValues;
                 quantityBoxes[i].BindingContext = new BindingContext();
                 updateInStockTextBox(quantityBoxes[i]);
@@ -331,6 +331,46 @@ namespace INB374
             tabControl1.SelectedIndex = 2; //go to tab 3
             tabControl1.TabPages[2].Enabled = true;
             label39.Text = String.Format("Customer: {0}",customerInContext.ToString());
+        }
+
+        private string getWaitingTime(Product product, bool inStock) {
+            bool inStore = product.inStore;
+            string waitTime = "";
+
+            switch (inStore) {
+                case true: {
+                    waitTime = "In Store";
+                    break;
+                }
+                case false: {
+                    switch (inStock) {
+                        case true: {
+                            waitTime = addDays(WarehouseController.getWaitTime(product.productCode));
+                            break;
+                        }
+                        case false: {
+                            waitTime = addDays((Convert.ToInt32(WarehouseController.getWaitTime(product.productCode)) + Convert.ToInt32(SupplierController.getWaitTime(product.productCode))).ToString());
+                            break;
+                        }
+                    }
+                    break;      
+                }
+            }
+
+            return waitTime;
+        }
+
+        private string addDays(string waitTime) {
+            string concatString = "";
+
+            if (Convert.ToInt32(waitTime) > 1) {
+                concatString = waitTime + " days";
+            }
+            else {
+                concatString = waitTime + " day";
+            }
+
+            return concatString;
         }
 
         /**
@@ -371,6 +411,7 @@ namespace INB374
 
             if (stockRemaining < 0) {
                 stockLabels[selectedQuantityIndex].Text = "No";
+                waitingLabels[selectedQuantityIndex].Text = getWaitingTime(productsSelected[selectedQuantityIndex], false);
             }
             else {
                 stockLabels[selectedQuantityIndex].Text = "Yes";
@@ -396,7 +437,22 @@ namespace INB374
         }
 
         private void confirmOrder_Click(object sender, EventArgs e) {
-            OrderController.addOrder(OrderController.createOrder(customerInContext.ToString(), DateTime.Now.ToString("d/M/yyyy"), "25/10/2013", "processing", "None"));
+
+            int shippingDelay = 0; 
+
+            for (int i = 0; i < productsSelected.Count; i++) { // get the longest delay for delivery
+                int delay = (int)Char.GetNumericValue(waitingLabels[i].Text[0]);
+
+                if (delay > shippingDelay) {
+                    shippingDelay = delay;
+                }
+            }
+
+            OrderController.addOrder(OrderController.createOrder(customerInContext.ToString(), DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.AddDays(shippingDelay).ToString("yyyy-MM-dd"), "processing", "None"));
+
+            Debug.WriteLine(shippingDelay);
+            Debug.WriteLine(DateTime.Now.ToString("yyyy-MM-dd"));
+            Debug.WriteLine(DateTime.Now.AddDays(shippingDelay).ToString("yyyy-MM-dd"));
 
             for (int i = 0; i < productsSelected.Count; i++) {
                 OrderController.addOrderDetails(OrderController.createOrderDetails(productsSelected[i].productCode, quantityBoxes[i].SelectedValue.ToString(), priceTextBoxes[i].Text));
