@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entities;
 
 import java.io.Serializable;
@@ -35,7 +37,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Products.findByProductVendor", query = "SELECT p FROM Products p WHERE p.productVendor = :productVendor"),
     @NamedQuery(name = "Products.findByQuantityInStock", query = "SELECT p FROM Products p WHERE p.quantityInStock = :quantityInStock"),
     @NamedQuery(name = "Products.findByBuyPrice", query = "SELECT p FROM Products p WHERE p.buyPrice = :buyPrice"),
-    @NamedQuery(name = "Products.findByMsrp", query = "SELECT p FROM Products p WHERE p.msrp = :msrp")})
+    @NamedQuery(name = "Products.findByMsrp", query = "SELECT p FROM Products p WHERE p.msrp = :msrp"),
+    @NamedQuery(name = "Products.findByInStore", query = "SELECT p FROM Products p WHERE p.inStore = :inStore"),
+    @NamedQuery(name = "Products.findByDeliveryTime", query = "SELECT p FROM Products p WHERE p.deliveryTime = :deliveryTime")})
 public class Products implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -69,6 +73,13 @@ public class Products implements Serializable {
     @NotNull
     @Column(name = "MSRP")
     private double msrp;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "inStore")
+    private boolean inStore;
+    @Size(max = 50)
+    @Column(name = "deliveryTime")
+    private String deliveryTime;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private Collection<Orderdetails> orderdetailsCollection;
 
@@ -79,13 +90,14 @@ public class Products implements Serializable {
         this.productCode = productCode;
     }
 
-    public Products(Integer productCode, String productName, String productVendor, short quantityInStock, double buyPrice, double msrp) {
+    public Products(Integer productCode, String productName, String productVendor, short quantityInStock, double buyPrice, double msrp, boolean inStore) {
         this.productCode = productCode;
         this.productName = productName;
         this.productVendor = productVendor;
         this.quantityInStock = quantityInStock;
         this.buyPrice = buyPrice;
         this.msrp = msrp;
+        this.inStore = inStore;
     }
 
     public Integer getProductCode() {
@@ -142,6 +154,22 @@ public class Products implements Serializable {
 
     public void setMsrp(double msrp) {
         this.msrp = msrp;
+    }
+
+    public boolean getInStore() {
+        return inStore;
+    }
+
+    public void setInStore(boolean inStore) {
+        this.inStore = inStore;
+    }
+
+    public String getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(String deliveryTime) {
+        this.deliveryTime = deliveryTime;
     }
 
     @XmlTransient

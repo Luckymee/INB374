@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package entities.service;
 
 import entities.Orders;
@@ -40,9 +42,9 @@ public class OrdersFacadeREST extends AbstractFacade<Orders> {
     }
 
     @PUT
-    @Override
+    @Path("{id}")
     @Consumes({"application/xml", "application/json"})
-    public void edit(Orders entity) {
+    public void edit(@PathParam("id") Integer id, Orders entity) {
         super.edit(entity);
     }
 
