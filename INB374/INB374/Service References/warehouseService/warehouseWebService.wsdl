@@ -16,6 +16,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getSupplierWaitTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSupplierWaitTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSupplierWaitTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="orderStock">
         <s:complexType />
       </s:element>
@@ -34,6 +48,12 @@
   <wsdl:message name="getWaitTimeSoapOut">
     <wsdl:part name="parameters" element="tns:getWaitTimeResponse" />
   </wsdl:message>
+  <wsdl:message name="getSupplierWaitTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:getSupplierWaitTime" />
+  </wsdl:message>
+  <wsdl:message name="getSupplierWaitTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:getSupplierWaitTimeResponse" />
+  </wsdl:message>
   <wsdl:message name="orderStockSoapIn">
     <wsdl:part name="parameters" element="tns:orderStock" />
   </wsdl:message>
@@ -45,6 +65,10 @@
       <wsdl:input message="tns:getWaitTimeSoapIn" />
       <wsdl:output message="tns:getWaitTimeSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="getSupplierWaitTime">
+      <wsdl:input message="tns:getSupplierWaitTimeSoapIn" />
+      <wsdl:output message="tns:getSupplierWaitTimeSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="orderStock">
       <wsdl:input message="tns:orderStockSoapIn" />
       <wsdl:output message="tns:orderStockSoapOut" />
@@ -54,6 +78,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getWaitTime">
       <soap:operation soapAction="http://tempuri.org/getWaitTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierWaitTime">
+      <soap:operation soapAction="http://tempuri.org/getSupplierWaitTime" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -75,6 +108,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="getWaitTime">
       <soap12:operation soapAction="http://tempuri.org/getWaitTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSupplierWaitTime">
+      <soap12:operation soapAction="http://tempuri.org/getSupplierWaitTime" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -12,5 +12,13 @@ namespace INB374 {
 
             return waitTime;
         }
+
+        public static string getSupplierWaitTime(string productCode)
+        {
+            warehouseWebServiceSoapClient warehouse = new warehouseWebServiceSoapClient();
+            string waitTime = warehouse.getSupplierWaitTime(productCode);
+
+            return waitTime;
+        }
     }
 }

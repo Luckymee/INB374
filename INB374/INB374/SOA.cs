@@ -354,7 +354,7 @@ namespace INB374
                             break;
                         }
                         case false: {
-                            waitTime = addDays((Convert.ToInt32(WarehouseController.getWaitTime(product.productCode)) + Convert.ToInt32(SupplierController.getWaitTime(product.productCode))).ToString());
+                            waitTime = addDays((Convert.ToInt32(WarehouseController.getWaitTime(product.productCode)) + Convert.ToInt32(WarehouseController.getSupplierWaitTime(product.productCode))).ToString());
                             break;
                         }
                     }
@@ -444,9 +444,13 @@ namespace INB374
         private void confirmOrder_Click(object sender, EventArgs e) {
 
             int shippingDelay = 0; 
-
+            int delay = 0;
             for (int i = 0; i < productsSelected.Count; i++) { // get the longest delay for delivery
-                int delay = Int32.Parse(waitingLabels[i].Text.Substring(0, 2));
+                
+                if (!waitingLabels[i].Text.Equals("In Store"))
+                {
+                    delay = Int32.Parse(waitingLabels[i].Text.Substring(0, 2));
+                }
 
                 if (delay > shippingDelay) {
                     shippingDelay = delay;

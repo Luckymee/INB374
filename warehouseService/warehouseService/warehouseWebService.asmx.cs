@@ -51,6 +51,13 @@ namespace warehouseService
         }
 
         [WebMethod]
+        public string getSupplierWaitTime(string productCode)
+        {
+            supplierWebServiceSoapClient supplier = new supplierWebServiceSoapClient();
+            return (supplier.getWaitTime(productCode));
+        }
+
+        [WebMethod]
         public string orderStock()
         {
             MySqlConnection connection = new MySqlConnection("SERVER=fastws.qut.edu.au;PORT=3306;DATABASE=n8510873;UID=n8510873;PASSWORD=12345;");
