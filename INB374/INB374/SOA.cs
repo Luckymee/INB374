@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -441,7 +442,7 @@ namespace INB374
             int shippingDelay = 0; 
 
             for (int i = 0; i < productsSelected.Count; i++) { // get the longest delay for delivery
-                int delay = (int)Char.GetNumericValue(waitingLabels[i].Text[0]);
+                int delay = Int32.Parse(waitingLabels[i].Text.Substring(0, 2));
 
                 if (delay > shippingDelay) {
                     shippingDelay = delay;
@@ -452,6 +453,7 @@ namespace INB374
 
             Debug.WriteLine(shippingDelay);
             Debug.WriteLine(DateTime.Now.ToString("yyyy-MM-dd"));
+            Debug.WriteLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
             Debug.WriteLine(DateTime.Now.AddDays(shippingDelay).ToString("yyyy-MM-dd"));
 
             for (int i = 0; i < productsSelected.Count; i++) {

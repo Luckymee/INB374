@@ -66,6 +66,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.recalculateTotal = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.confirmOrder = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
@@ -101,7 +102,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.recalculateTotal = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -521,6 +521,16 @@
             this.tabPage3.Text = "Order Confirm";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // recalculateTotal
+            // 
+            this.recalculateTotal.Location = new System.Drawing.Point(389, 271);
+            this.recalculateTotal.Name = "recalculateTotal";
+            this.recalculateTotal.Size = new System.Drawing.Size(75, 23);
+            this.recalculateTotal.TabIndex = 35;
+            this.recalculateTotal.Text = "Recalculate";
+            this.recalculateTotal.UseVisualStyleBackColor = true;
+            this.recalculateTotal.Click += new System.EventHandler(this.recalculateTotal_Click);
+            // 
             // label39
             // 
             this.label39.AutoSize = true;
@@ -840,23 +850,13 @@
             this.label15.TabIndex = 0;
             this.label15.Text = "Order Summary:";
             // 
-            // recalculateTotal
-            // 
-            this.recalculateTotal.Location = new System.Drawing.Point(389, 271);
-            this.recalculateTotal.Name = "recalculateTotal";
-            this.recalculateTotal.Size = new System.Drawing.Size(75, 23);
-            this.recalculateTotal.TabIndex = 35;
-            this.recalculateTotal.Text = "Recalculate";
-            this.recalculateTotal.UseVisualStyleBackColor = true;
-            this.recalculateTotal.Click += new System.EventHandler(this.recalculateTotal_Click);
-            // 
-            // Form1
+            // SOA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 371);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
+            this.Name = "SOA";
             this.Text = "Slightly Overpriced Applicances";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);

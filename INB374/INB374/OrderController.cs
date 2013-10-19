@@ -1,6 +1,8 @@
-﻿using INB374.ServiceReference1;
+﻿//using INB374.ServiceReference1;
+using INB374.orderService;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -8,12 +10,20 @@ namespace INB374 {
     class OrderController {
 
         public static void addOrder(Order order) {
-            WebService1SoapClient orderService = new WebService1SoapClient();
-            orderService.addOrder(order);
+
+            orderWebServiceSoapClient orderService = new orderWebServiceSoapClient();
+            try
+            {
+                orderService.addOrder(order);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
 
         public static void addOrderDetails(OrderDetails orderDetails){
-            WebService1SoapClient orderService = new WebService1SoapClient();
+            orderWebServiceSoapClient orderService = new orderWebServiceSoapClient();
             orderService.addOrderDetails(orderDetails);
         }
 
