@@ -101,8 +101,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Service References\orderService\orderWebService1.wsdl" />
-    <None Include="Service References\supplierService\supplierService1.wsdl" />
-    <None Include="Service References\warehouseService\WebService11.wsdl" />
+    <None Include="Service References\supplierService\INB374.supplierService.Product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\supplierService\supplierWebService.wsdl" />
+    <None Include="Service References\warehouseService\warehouseWebService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -135,12 +138,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\warehouseService\WebService11.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\supplierService\supplierService1.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\orderService\configuration91.svcinfo" />

@@ -7,7 +7,7 @@ using System.Text;
 namespace INB374 {
     class SupplierController {
         public static string getWaitTime(string productCode) {
-            supplierServiceSoapClient supplier = new supplierServiceSoapClient();
+            supplierWebServiceSoapClient supplier = new supplierWebServiceSoapClient();
             string waitTime = supplier.getWaitTime(productCode);
 
             return waitTime;

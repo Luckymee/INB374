@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3625090c-9dc4-460c-b568-71ac1af042ce" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="31d57d1a-e1ea-4ffa-870d-bc5baff225c7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,10 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://fastapps04.qut.edu.au/n8510873/warehouseService/warehouseWebService.asmx?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://fastapps04.qut.edu.au/n8510873/supplierService/supplierWebService.asmx?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="warehouseWebService.wsdl" MetadataType="Wsdl" ID="0821594f-689f-4d3d-afd2-db5d845a15ee" SourceId="1" SourceUrl="http://fastapps04.qut.edu.au/n8510873/warehouseService/warehouseWebService.asmx?WSDL" />
+    <MetadataFile FileName="supplierWebService.wsdl" MetadataType="Wsdl" ID="20a339d1-2eed-49ef-a440-78c68f317da7" SourceId="1" SourceUrl="http://fastapps04.qut.edu.au/n8510873/supplierService/supplierWebService.asmx?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

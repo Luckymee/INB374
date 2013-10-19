@@ -18,11 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://fastapps04.qut.edu.au/n8571520/WebApplication4/supplierService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://fastapps04.qut.edu.au/n8510873/supplierService/supplierWebService.asmx?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="supplierService1.disco" MetadataType="Disco" ID="043e6c06-cee0-4a0f-9166-0c2aa4a62f16" SourceId="1" SourceUrl="http://fastapps04.qut.edu.au/n8571520/WebApplication4/supplierService.asmx?disco" />
-    <MetadataFile FileName="supplierService1.wsdl" MetadataType="Wsdl" ID="ef61cc18-6902-4d86-b9ba-c5d37ee36295" SourceId="1" SourceUrl="http://fastapps04.qut.edu.au/n8571520/WebApplication4/supplierService.asmx?wsdl" />
+    <MetadataFile FileName="supplierWebService.wsdl" MetadataType="Wsdl" ID="39bda5ec-47c6-4256-9f67-c235dcc73b83" SourceId="1" SourceUrl="http://fastapps04.qut.edu.au/n8510873/supplierService/supplierWebService.asmx?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

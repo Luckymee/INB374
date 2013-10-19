@@ -1,4 +1,5 @@
-﻿using System;
+﻿using INB374.warehouseService;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -328,6 +329,9 @@ namespace INB374
                 waitingLabels[i].Hide();
                 stockLabels[i].Hide();
             }
+
+            warehouseWebServiceSoapClient warehouse = new warehouseWebServiceSoapClient();
+            warehouse.orderStock();
 
             tabControl1.SelectedIndex = 2; //go to tab 3
             tabControl1.TabPages[2].Enabled = true;

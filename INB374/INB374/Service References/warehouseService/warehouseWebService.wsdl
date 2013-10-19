@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="getWaitTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getWaitTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getWaitTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="orderStock">
+        <s:complexType />
+      </s:element>
+      <s:element name="orderStockResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="orderStockResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getWaitTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:getWaitTime" />
+  </wsdl:message>
+  <wsdl:message name="getWaitTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:getWaitTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="orderStockSoapIn">
+    <wsdl:part name="parameters" element="tns:orderStock" />
+  </wsdl:message>
+  <wsdl:message name="orderStockSoapOut">
+    <wsdl:part name="parameters" element="tns:orderStockResponse" />
+  </wsdl:message>
+  <wsdl:portType name="warehouseWebServiceSoap">
+    <wsdl:operation name="getWaitTime">
+      <wsdl:input message="tns:getWaitTimeSoapIn" />
+      <wsdl:output message="tns:getWaitTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="orderStock">
+      <wsdl:input message="tns:orderStockSoapIn" />
+      <wsdl:output message="tns:orderStockSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="warehouseWebServiceSoap" type="tns:warehouseWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getWaitTime">
+      <soap:operation soapAction="http://tempuri.org/getWaitTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderStock">
+      <soap:operation soapAction="http://tempuri.org/orderStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="warehouseWebServiceSoap12" type="tns:warehouseWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getWaitTime">
+      <soap12:operation soapAction="http://tempuri.org/getWaitTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="orderStock">
+      <soap12:operation soapAction="http://tempuri.org/orderStock" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="warehouseWebService">
+    <wsdl:port name="warehouseWebServiceSoap" binding="tns:warehouseWebServiceSoap">
+      <soap:address location="http://fastapps04.qut.edu.au/n8510873/warehouseService/warehouseWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="warehouseWebServiceSoap12" binding="tns:warehouseWebServiceSoap12">
+      <soap12:address location="http://fastapps04.qut.edu.au/n8510873/warehouseService/warehouseWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

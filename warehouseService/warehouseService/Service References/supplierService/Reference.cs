@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace INB374.supplierService {
+namespace warehouseService.supplierService {
     using System.Runtime.Serialization;
     using System;
     
@@ -172,11 +172,11 @@ namespace INB374.supplierService {
         
         // CODEGEN: Generating message contract since element name productCode from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getWaitTime", ReplyAction="*")]
-        INB374.supplierService.getWaitTimeResponse getWaitTime(INB374.supplierService.getWaitTimeRequest request);
+        warehouseService.supplierService.getWaitTimeResponse getWaitTime(warehouseService.supplierService.getWaitTimeRequest request);
         
         // CODEGEN: Generating message contract since element name orderQueue from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/restockWarehouse", ReplyAction="*")]
-        INB374.supplierService.restockWarehouseResponse restockWarehouse(INB374.supplierService.restockWarehouseRequest request);
+        warehouseService.supplierService.restockWarehouseResponse restockWarehouse(warehouseService.supplierService.restockWarehouseRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -186,12 +186,12 @@ namespace INB374.supplierService {
     public partial class getWaitTimeRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="getWaitTime", Namespace="http://tempuri.org/", Order=0)]
-        public INB374.supplierService.getWaitTimeRequestBody Body;
+        public warehouseService.supplierService.getWaitTimeRequestBody Body;
         
         public getWaitTimeRequest() {
         }
         
-        public getWaitTimeRequest(INB374.supplierService.getWaitTimeRequestBody Body) {
+        public getWaitTimeRequest(warehouseService.supplierService.getWaitTimeRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -220,12 +220,12 @@ namespace INB374.supplierService {
     public partial class getWaitTimeResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="getWaitTimeResponse", Namespace="http://tempuri.org/", Order=0)]
-        public INB374.supplierService.getWaitTimeResponseBody Body;
+        public warehouseService.supplierService.getWaitTimeResponseBody Body;
         
         public getWaitTimeResponse() {
         }
         
-        public getWaitTimeResponse(INB374.supplierService.getWaitTimeResponseBody Body) {
+        public getWaitTimeResponse(warehouseService.supplierService.getWaitTimeResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -254,12 +254,12 @@ namespace INB374.supplierService {
     public partial class restockWarehouseRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="restockWarehouse", Namespace="http://tempuri.org/", Order=0)]
-        public INB374.supplierService.restockWarehouseRequestBody Body;
+        public warehouseService.supplierService.restockWarehouseRequestBody Body;
         
         public restockWarehouseRequest() {
         }
         
-        public restockWarehouseRequest(INB374.supplierService.restockWarehouseRequestBody Body) {
+        public restockWarehouseRequest(warehouseService.supplierService.restockWarehouseRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -271,12 +271,12 @@ namespace INB374.supplierService {
     public partial class restockWarehouseRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public INB374.supplierService.OrderQueue[] orderQueue;
+        public warehouseService.supplierService.OrderQueue[] orderQueue;
         
         public restockWarehouseRequestBody() {
         }
         
-        public restockWarehouseRequestBody(INB374.supplierService.OrderQueue[] orderQueue) {
+        public restockWarehouseRequestBody(warehouseService.supplierService.OrderQueue[] orderQueue) {
             this.orderQueue = orderQueue;
         }
     }
@@ -288,12 +288,12 @@ namespace INB374.supplierService {
     public partial class restockWarehouseResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="restockWarehouseResponse", Namespace="http://tempuri.org/", Order=0)]
-        public INB374.supplierService.restockWarehouseResponseBody Body;
+        public warehouseService.supplierService.restockWarehouseResponseBody Body;
         
         public restockWarehouseResponse() {
         }
         
-        public restockWarehouseResponse(INB374.supplierService.restockWarehouseResponseBody Body) {
+        public restockWarehouseResponse(warehouseService.supplierService.restockWarehouseResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -305,23 +305,23 @@ namespace INB374.supplierService {
     public partial class restockWarehouseResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public INB374.supplierService.Product[] restockWarehouseResult;
+        public warehouseService.supplierService.Product[] restockWarehouseResult;
         
         public restockWarehouseResponseBody() {
         }
         
-        public restockWarehouseResponseBody(INB374.supplierService.Product[] restockWarehouseResult) {
+        public restockWarehouseResponseBody(warehouseService.supplierService.Product[] restockWarehouseResult) {
             this.restockWarehouseResult = restockWarehouseResult;
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface supplierWebServiceSoapChannel : INB374.supplierService.supplierWebServiceSoap, System.ServiceModel.IClientChannel {
+    public interface supplierWebServiceSoapChannel : warehouseService.supplierService.supplierWebServiceSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class supplierWebServiceSoapClient : System.ServiceModel.ClientBase<INB374.supplierService.supplierWebServiceSoap>, INB374.supplierService.supplierWebServiceSoap {
+    public partial class supplierWebServiceSoapClient : System.ServiceModel.ClientBase<warehouseService.supplierService.supplierWebServiceSoap>, warehouseService.supplierService.supplierWebServiceSoap {
         
         public supplierWebServiceSoapClient() {
         }
@@ -343,28 +343,28 @@ namespace INB374.supplierService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        INB374.supplierService.getWaitTimeResponse INB374.supplierService.supplierWebServiceSoap.getWaitTime(INB374.supplierService.getWaitTimeRequest request) {
+        warehouseService.supplierService.getWaitTimeResponse warehouseService.supplierService.supplierWebServiceSoap.getWaitTime(warehouseService.supplierService.getWaitTimeRequest request) {
             return base.Channel.getWaitTime(request);
         }
         
         public string getWaitTime(string productCode) {
-            INB374.supplierService.getWaitTimeRequest inValue = new INB374.supplierService.getWaitTimeRequest();
-            inValue.Body = new INB374.supplierService.getWaitTimeRequestBody();
+            warehouseService.supplierService.getWaitTimeRequest inValue = new warehouseService.supplierService.getWaitTimeRequest();
+            inValue.Body = new warehouseService.supplierService.getWaitTimeRequestBody();
             inValue.Body.productCode = productCode;
-            INB374.supplierService.getWaitTimeResponse retVal = ((INB374.supplierService.supplierWebServiceSoap)(this)).getWaitTime(inValue);
+            warehouseService.supplierService.getWaitTimeResponse retVal = ((warehouseService.supplierService.supplierWebServiceSoap)(this)).getWaitTime(inValue);
             return retVal.Body.getWaitTimeResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        INB374.supplierService.restockWarehouseResponse INB374.supplierService.supplierWebServiceSoap.restockWarehouse(INB374.supplierService.restockWarehouseRequest request) {
+        warehouseService.supplierService.restockWarehouseResponse warehouseService.supplierService.supplierWebServiceSoap.restockWarehouse(warehouseService.supplierService.restockWarehouseRequest request) {
             return base.Channel.restockWarehouse(request);
         }
         
-        public INB374.supplierService.Product[] restockWarehouse(INB374.supplierService.OrderQueue[] orderQueue) {
-            INB374.supplierService.restockWarehouseRequest inValue = new INB374.supplierService.restockWarehouseRequest();
-            inValue.Body = new INB374.supplierService.restockWarehouseRequestBody();
+        public warehouseService.supplierService.Product[] restockWarehouse(warehouseService.supplierService.OrderQueue[] orderQueue) {
+            warehouseService.supplierService.restockWarehouseRequest inValue = new warehouseService.supplierService.restockWarehouseRequest();
+            inValue.Body = new warehouseService.supplierService.restockWarehouseRequestBody();
             inValue.Body.orderQueue = orderQueue;
-            INB374.supplierService.restockWarehouseResponse retVal = ((INB374.supplierService.supplierWebServiceSoap)(this)).restockWarehouse(inValue);
+            warehouseService.supplierService.restockWarehouseResponse retVal = ((warehouseService.supplierService.supplierWebServiceSoap)(this)).restockWarehouse(inValue);
             return retVal.Body.restockWarehouseResult;
         }
     }

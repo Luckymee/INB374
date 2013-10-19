@@ -12,12 +12,16 @@ namespace INB374.warehouseService {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="warehouseService.WebService1Soap")]
-    public interface WebService1Soap {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="warehouseService.warehouseWebServiceSoap")]
+    public interface warehouseWebServiceSoap {
         
         // CODEGEN: Generating message contract since element name productCode from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getWaitTime", ReplyAction="*")]
         INB374.warehouseService.getWaitTimeResponse getWaitTime(INB374.warehouseService.getWaitTimeRequest request);
+        
+        // CODEGEN: Generating message contract since element name orderStockResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/orderStock", ReplyAction="*")]
+        INB374.warehouseService.orderStockResponse orderStock(INB374.warehouseService.orderStockRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -88,35 +92,96 @@ namespace INB374.warehouseService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface WebService1SoapChannel : INB374.warehouseService.WebService1Soap, System.ServiceModel.IClientChannel {
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class orderStockRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="orderStock", Namespace="http://tempuri.org/", Order=0)]
+        public INB374.warehouseService.orderStockRequestBody Body;
+        
+        public orderStockRequest() {
+        }
+        
+        public orderStockRequest(INB374.warehouseService.orderStockRequestBody Body) {
+            this.Body = Body;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class WebService1SoapClient : System.ServiceModel.ClientBase<INB374.warehouseService.WebService1Soap>, INB374.warehouseService.WebService1Soap {
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class orderStockRequestBody {
         
-        public WebService1SoapClient() {
+        public orderStockRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class orderStockResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="orderStockResponse", Namespace="http://tempuri.org/", Order=0)]
+        public INB374.warehouseService.orderStockResponseBody Body;
+        
+        public orderStockResponse() {
         }
         
-        public WebService1SoapClient(string endpointConfigurationName) : 
+        public orderStockResponse(INB374.warehouseService.orderStockResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class orderStockResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string orderStockResult;
+        
+        public orderStockResponseBody() {
+        }
+        
+        public orderStockResponseBody(string orderStockResult) {
+            this.orderStockResult = orderStockResult;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface warehouseWebServiceSoapChannel : INB374.warehouseService.warehouseWebServiceSoap, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class warehouseWebServiceSoapClient : System.ServiceModel.ClientBase<INB374.warehouseService.warehouseWebServiceSoap>, INB374.warehouseService.warehouseWebServiceSoap {
+        
+        public warehouseWebServiceSoapClient() {
+        }
+        
+        public warehouseWebServiceSoapClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public WebService1SoapClient(string endpointConfigurationName, string remoteAddress) : 
+        public warehouseWebServiceSoapClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WebService1SoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public warehouseWebServiceSoapClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public WebService1SoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public warehouseWebServiceSoapClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        INB374.warehouseService.getWaitTimeResponse INB374.warehouseService.WebService1Soap.getWaitTime(INB374.warehouseService.getWaitTimeRequest request) {
+        INB374.warehouseService.getWaitTimeResponse INB374.warehouseService.warehouseWebServiceSoap.getWaitTime(INB374.warehouseService.getWaitTimeRequest request) {
             return base.Channel.getWaitTime(request);
         }
         
@@ -124,8 +189,20 @@ namespace INB374.warehouseService {
             INB374.warehouseService.getWaitTimeRequest inValue = new INB374.warehouseService.getWaitTimeRequest();
             inValue.Body = new INB374.warehouseService.getWaitTimeRequestBody();
             inValue.Body.productCode = productCode;
-            INB374.warehouseService.getWaitTimeResponse retVal = ((INB374.warehouseService.WebService1Soap)(this)).getWaitTime(inValue);
+            INB374.warehouseService.getWaitTimeResponse retVal = ((INB374.warehouseService.warehouseWebServiceSoap)(this)).getWaitTime(inValue);
             return retVal.Body.getWaitTimeResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        INB374.warehouseService.orderStockResponse INB374.warehouseService.warehouseWebServiceSoap.orderStock(INB374.warehouseService.orderStockRequest request) {
+            return base.Channel.orderStock(request);
+        }
+        
+        public string orderStock() {
+            INB374.warehouseService.orderStockRequest inValue = new INB374.warehouseService.orderStockRequest();
+            inValue.Body = new INB374.warehouseService.orderStockRequestBody();
+            INB374.warehouseService.orderStockResponse retVal = ((INB374.warehouseService.warehouseWebServiceSoap)(this)).orderStock(inValue);
+            return retVal.Body.orderStockResult;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 namespace INB374 {
     class WarehouseController {
         public static string getWaitTime(string productCode) {
-            WebService1SoapClient warehouse = new WebService1SoapClient();
+            warehouseWebServiceSoapClient warehouse = new warehouseWebServiceSoapClient();
             string waitTime = warehouse.getWaitTime(productCode);
 
             return waitTime;
