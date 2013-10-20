@@ -6,6 +6,8 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -54,11 +56,19 @@ namespace INB374
         /** Front-end client inital constructor. */
         public SOA()
         {
-            InitializeComponent();
-            this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
-            customerNumber.Text = custNum.ToString();
-            tabControl1.TabPages[2].Text = "Order Summary";
-            tabControl1.TabPages[2].Enabled = false;
+            try
+            {
+                reachability();
+                InitializeComponent();
+                this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
+                customerNumber.Text = custNum.ToString();
+                tabControl1.TabPages[2].Text = "Order Summary";
+                tabControl1.TabPages[2].Enabled = false;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -467,6 +477,9 @@ namespace INB374
             for (int i = 0; i < productsSelected.Count; i++) {
                 OrderController.addOrderDetails(OrderController.createOrderDetails(productsSelected[i].productCode, quantityBoxes[i].SelectedValue.ToString(), priceTextBoxes[i].Text));
             }
+
+            tabControl1.SelectedIndex = 1;
+            tabControl1.TabPages[2].Enabled = false;
         }
 
         /* combo box update on change methods */
@@ -524,6 +537,45 @@ namespace INB374
         {
             //TODO Inhibit confirm order before this has been clicked.
             calculateOrderTotal();
+        }
+
+        private void reachability()
+        {
+            try
+            {
+                // QUT fastws
+                string host = "131.181.184.98";
+
+                IPAddress hostAddress = Dns.GetHostEntry(host).AddressList[0];
+                Ping ping = new Ping();
+                PingReply pingReply = ping.Send(hostAddress);
+
+                if (pingReply.Status == IPStatus.Success)
+                {
+                    /*
+                    MessageBox.Show("Server ( " + pingReply.Address.ToString()
+                        + " ) is reachable.", pingReply.Status.ToString(),
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     */
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Server is unreachable.\nPlease connect to QUT, then reopen the program.", pingReply.Status.ToString(),
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    throw new Exception();
+                }
+            }
+            catch (PingException ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString(),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            catch (Exception ex)
+            {
+                throw new System.ArgumentException("Unreacheable");
+            }
         }
     }
 }
