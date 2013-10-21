@@ -101,7 +101,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\orderService\orderWebService.wsdl" />
+    <None Include="Service References\orderService\orderWebService1.wsdl" />
     <None Include="Service References\supplierService\INB374.supplierService.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -151,9 +151,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\orderService\orderWebService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

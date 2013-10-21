@@ -18,11 +18,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:63718/orderWebService.asmx" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://fastapps04.qut.edu.au/n8510873/orderService/orderWebService.asmx?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="orderWebService.wsdl" MetadataType="Wsdl" ID="159e1d6d-bdf7-4d49-8298-28fc1755f4f4" SourceId="1" SourceUrl="http://localhost:63718/orderWebService.asmx?wsdl" />
-    <MetadataFile FileName="orderWebService.disco" MetadataType="Disco" ID="b1b3b590-fe01-4920-84de-a456d6d7a5a7" SourceId="1" SourceUrl="http://localhost:63718/orderWebService.asmx?disco" />
+    <MetadataFile FileName="orderWebService1.wsdl" MetadataType="Wsdl" ID="2134835d-bf3e-4510-9b05-24241aaf66ab" SourceId="1" SourceUrl="http://fastapps04.qut.edu.au/n8510873/orderService/orderWebService.asmx?WSDL" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
