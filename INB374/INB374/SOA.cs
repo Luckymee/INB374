@@ -104,7 +104,7 @@ namespace INB374
             }
 
             // Check for numerics in Name.
-            string valEx = "^[A-Za-z]+$";
+            string valEx = @"^[A-Za-z\s]+$";
             if (!Regex.IsMatch(this.customerName.Text.Trim(), valEx))
             {
                 MessageBox.Show("Please enter a name, without numerical characters.");
