@@ -22,9 +22,9 @@ namespace INB374 {
             }
         }
 
-        public static void addOrderDetails(OrderDetails orderDetails){
+        public static void addOrderDetails(OrderDetails orderDetails, int quantityStocked){
             orderWebServiceSoapClient orderService = new orderWebServiceSoapClient();
-            orderService.addOrderDetails(orderDetails);
+            orderService.addOrderDetails(orderDetails, quantityStocked);
         }
 
         public static OrderDetails createOrderDetails(string code, string quantity, string price) {
@@ -47,6 +47,11 @@ namespace INB374 {
             order.comments = comments;
 
             return order;
+        }
+
+        public static void updateExisitingOrders() {
+            orderWebServiceSoapClient orderService = new orderWebServiceSoapClient();
+            orderService.updateExistingOrders();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using INB374.warehouseService;
+﻿using INB374.orderService;
+using INB374.warehouseService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,8 +63,9 @@ namespace INB374
                 InitializeComponent();
                 this.custNum = Convert.ToInt32(CustomerRestController.makeRequest(Constants.CUSTOMER_COUNT_ENDPOINT)) + 1;
                 customerNumber.Text = custNum.ToString();
-                tabControl1.TabPages[2].Text = "Order Summary";
                 tabControl1.TabPages[2].Enabled = false;
+                OrderController.updateExisitingOrders();
+
             }
             catch (Exception e)
             {
@@ -354,7 +356,16 @@ namespace INB374
 
             switch (inStore) {
                 case true: {
-                    waitTime = "In Store";
+                    switch (inStock) {
+                        case true: {
+                                waitTime = "In Store";
+                                break;
+                            }
+                        case false: {
+                                waitTime = addDays(WarehouseController.getSupplierWaitTime(product.productCode)).ToString();
+                                break;
+                            }
+                    }
                     break;
                 }
                 case false: {
@@ -455,10 +466,11 @@ namespace INB374
 
             int shippingDelay = 0; 
             int delay = 0;
+            string orderStatus;
+
             for (int i = 0; i < productsSelected.Count; i++) { // get the longest delay for delivery
                 
-                if (!waitingLabels[i].Text.Equals("In Store"))
-                {
+                if (!waitingLabels[i].Text.Equals("In Store")) {
                     delay = Int32.Parse(waitingLabels[i].Text.Substring(0, 2));
                 }
 
@@ -467,17 +479,19 @@ namespace INB374
                 }
             }
 
-            OrderController.addOrder(OrderController.createOrder(customerInContext.ToString(), DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.AddDays(shippingDelay).ToString("yyyy-MM-dd"), "processing", "None"));
-
-            Debug.WriteLine(shippingDelay);
-            Debug.WriteLine(DateTime.Now.ToString("yyyy-MM-dd"));
-            Debug.WriteLine(DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
-            Debug.WriteLine(DateTime.Now.AddDays(shippingDelay).ToString("yyyy-MM-dd"));
-
-            for (int i = 0; i < productsSelected.Count; i++) {
-                OrderController.addOrderDetails(OrderController.createOrderDetails(productsSelected[i].productCode, quantityBoxes[i].SelectedValue.ToString(), priceTextBoxes[i].Text));
+            if (shippingDelay > 0) {
+                orderStatus = "Processing";
+            } else {
+                orderStatus = "Complete";
             }
 
+            OrderController.addOrder(OrderController.createOrder(customerInContext.ToString(), DateTime.Now.ToString("yyyy-MM-dd"), DateTime.Now.AddDays(shippingDelay).ToString("yyyy-MM-dd"), orderStatus, "None"));
+
+            for (int i = 0; i < productsSelected.Count; i++) {
+                OrderController.addOrderDetails(OrderController.createOrderDetails(productsSelected[i].productCode, quantityBoxes[i].SelectedValue.ToString(), priceTextBoxes[i].Text), int.Parse(productsSelected[i].quantityInStock));
+            }
+
+            MessageBoxEx.Show(this,"Order has been successfully placed.", "Order Complete");
             tabControl1.SelectedIndex = 1;
             tabControl1.TabPages[2].Enabled = false;
         }

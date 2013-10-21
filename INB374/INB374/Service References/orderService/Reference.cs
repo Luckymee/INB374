@@ -242,6 +242,9 @@ namespace INB374.orderService {
         // CODEGEN: Generating message contract since element name orderDetails from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/addOrderDetails", ReplyAction="*")]
         INB374.orderService.addOrderDetailsResponse addOrderDetails(INB374.orderService.addOrderDetailsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/updateExistingOrders", ReplyAction="*")]
+        void updateExistingOrders();
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -331,11 +334,15 @@ namespace INB374.orderService {
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
         public INB374.orderService.OrderDetails orderDetails;
         
+        [System.Runtime.Serialization.DataMemberAttribute(Order=1)]
+        public int quantityStocked;
+        
         public addOrderDetailsRequestBody() {
         }
         
-        public addOrderDetailsRequestBody(INB374.orderService.OrderDetails orderDetails) {
+        public addOrderDetailsRequestBody(INB374.orderService.OrderDetails orderDetails, int quantityStocked) {
             this.orderDetails = orderDetails;
+            this.quantityStocked = quantityStocked;
         }
     }
     
@@ -410,11 +417,16 @@ namespace INB374.orderService {
             return base.Channel.addOrderDetails(request);
         }
         
-        public void addOrderDetails(INB374.orderService.OrderDetails orderDetails) {
+        public void addOrderDetails(INB374.orderService.OrderDetails orderDetails, int quantityStocked) {
             INB374.orderService.addOrderDetailsRequest inValue = new INB374.orderService.addOrderDetailsRequest();
             inValue.Body = new INB374.orderService.addOrderDetailsRequestBody();
             inValue.Body.orderDetails = orderDetails;
+            inValue.Body.quantityStocked = quantityStocked;
             INB374.orderService.addOrderDetailsResponse retVal = ((INB374.orderService.orderWebServiceSoap)(this)).addOrderDetails(inValue);
+        }
+        
+        public void updateExistingOrders() {
+            base.Channel.updateExistingOrders();
         }
     }
 }

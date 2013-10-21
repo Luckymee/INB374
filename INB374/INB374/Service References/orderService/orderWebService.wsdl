@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:element name="addOrder">
@@ -26,6 +26,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="orderDetails" type="tns:OrderDetails" />
+            <s:element minOccurs="1" maxOccurs="1" name="quantityStocked" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -38,6 +39,12 @@
         </s:sequence>
       </s:complexType>
       <s:element name="addOrderDetailsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateExistingOrders">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateExistingOrdersResponse">
         <s:complexType />
       </s:element>
     </s:schema>
@@ -54,6 +61,12 @@
   <wsdl:message name="addOrderDetailsSoapOut">
     <wsdl:part name="parameters" element="tns:addOrderDetailsResponse" />
   </wsdl:message>
+  <wsdl:message name="updateExistingOrdersSoapIn">
+    <wsdl:part name="parameters" element="tns:updateExistingOrders" />
+  </wsdl:message>
+  <wsdl:message name="updateExistingOrdersSoapOut">
+    <wsdl:part name="parameters" element="tns:updateExistingOrdersResponse" />
+  </wsdl:message>
   <wsdl:portType name="orderWebServiceSoap">
     <wsdl:operation name="addOrder">
       <wsdl:input message="tns:addOrderSoapIn" />
@@ -62,6 +75,10 @@
     <wsdl:operation name="addOrderDetails">
       <wsdl:input message="tns:addOrderDetailsSoapIn" />
       <wsdl:output message="tns:addOrderDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateExistingOrders">
+      <wsdl:input message="tns:updateExistingOrdersSoapIn" />
+      <wsdl:output message="tns:updateExistingOrdersSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="orderWebServiceSoap" type="tns:orderWebServiceSoap">
@@ -77,6 +94,15 @@
     </wsdl:operation>
     <wsdl:operation name="addOrderDetails">
       <soap:operation soapAction="http://tempuri.org/addOrderDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateExistingOrders">
+      <soap:operation soapAction="http://tempuri.org/updateExistingOrders" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -105,13 +131,22 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="updateExistingOrders">
+      <soap12:operation soapAction="http://tempuri.org/updateExistingOrders" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="orderWebService">
     <wsdl:port name="orderWebServiceSoap" binding="tns:orderWebServiceSoap">
-      <soap:address location="http://fastapps04.qut.edu.au/n8510873/orderService/orderWebService.asmx" />
+      <soap:address location="http://localhost:63718/orderWebService.asmx" />
     </wsdl:port>
     <wsdl:port name="orderWebServiceSoap12" binding="tns:orderWebServiceSoap12">
-      <soap12:address location="http://fastapps04.qut.edu.au/n8510873/orderService/orderWebService.asmx" />
+      <soap12:address location="http://localhost:63718/orderWebService.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

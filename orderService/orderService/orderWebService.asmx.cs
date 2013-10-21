@@ -46,7 +46,7 @@ namespace orderService
         }
 
         [WebMethod]
-        public void addOrderDetails(OrderDetails orderDetails)
+        public void addOrderDetails(OrderDetails orderDetails, int quantityStocked)
         {
 
             MySqlConnection connection = new MySqlConnection("SERVER=fastws.qut.edu.au;PORT=3306;DATABASE=n8510873;UID=n8510873;PASSWORD=12345;");
@@ -62,9 +62,36 @@ namespace orderService
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 cmd.ExecuteNonQuery();
 
+                query = String.Format("UPDATE `n8510873`.`products` SET `quantityInStock`= '{0}' WHERE `productCode` = '{1}'", quantityStocked - int.Parse(orderDetails.quantityOrdered), orderDetails.productCode);
+                Debug.WriteLine(query);
+                cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
             }
             catch (Exception e)
             {
+                Debug.WriteLine(e.Message);
+            }
+
+            connection.Close();
+            Debug.WriteLine("Finished");
+        }
+
+        [WebMethod]
+        public void updateExistingOrders() {
+            MySqlConnection connection = new MySqlConnection("SERVER=fastws.qut.edu.au;PORT=3306;DATABASE=n8510873;UID=n8510873;PASSWORD=12345;");
+
+            try {
+                Debug.WriteLine("Connecting to n8510873");
+                connection.Open();
+
+                string query = String.Format("UPDATE `n8510873`.`orders` SET `status`='Complete' WHERE DATE(shippingDate) <= '{0}'", DateTime.Now.ToString("yyyy-MM-dd"));
+                Debug.WriteLine(query);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (Exception e) {
                 Debug.WriteLine(e.Message);
             }
 
