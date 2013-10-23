@@ -23,7 +23,7 @@ namespace INB374
          *@param requestURL - string: The restful url to be parsed for its response.
          *@return xmlResponse - XmlDocument: A valid xml containing the requested products.
          */
-        public static XmlDocument makeRequest(string requestURL)
+        public static XmlDocument makeProductRequest(string requestURL)
         {
             try
             {
