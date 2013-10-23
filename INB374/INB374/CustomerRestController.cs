@@ -35,14 +35,14 @@ namespace INB374
 
             return (customerRecord);
         }
-        /** postXML
+        /** postCustomerXML
          * 
          * Create post webrequst to transfer data to the web service.
          * 
          * @param postURL - string: Customer endpoint.
          * @param xmlDoc - XmlDocument: valid xml document built from customer object.
          */
-        public static string postXML(string postURL, XmlDocument xmlDoc)
+        public static string postCustomerXML(string postURL, XmlDocument xmlDoc)
         {
             // Create the request
             WebRequest request = WebRequest.Create(postURL);

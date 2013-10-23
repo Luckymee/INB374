@@ -116,7 +116,7 @@ namespace INB374
             try
             {
                 // Create XML from customer object.
-                string customerToAdd = CustomerRestController.postXML(Constants.CUSTOMER_ENDPOINT, CustomerRestController.createCustomerXML(customer));
+                string customerToAdd = CustomerRestController.postCustomerXML(Constants.CUSTOMER_ENDPOINT, CustomerRestController.createCustomerXML(customer));
                 if (customerToAdd == null)
                 {
                     throw new ArgumentNullException();
@@ -167,7 +167,7 @@ namespace INB374
             productSelectLabels.Add(label11);
 
             string request = ProductRestController.CreateRequest("test");
-            XmlDocument response = ProductRestController.makeRequest(request);
+            XmlDocument response = ProductRestController.makeProductRequest(request);
             productList = ProductRestController.ProcessResponse(response);
 
             for (int i = 0; i < productList.Count; i++)
