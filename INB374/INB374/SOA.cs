@@ -543,16 +543,6 @@ namespace INB374
             updateCustomerInContext();
         }
 
-        /**
-         * Calculates the order total based on the selected items and their quanitites.
-         * Used to ensure the total is correct before confirming order. 
-         */
-        private void recalculateTotal_Click(object sender, EventArgs e)
-        {
-            //TODO Inhibit confirm order before this has been clicked.
-            calculateOrderTotal();
-        }
-
         private void reachability()
         {
             try
@@ -591,5 +581,76 @@ namespace INB374
                 throw new System.ArgumentException("Unreacheable");
             }
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages[2])
+            {
+                string valEx = @"^[0-9]+$";
+                if (!Regex.IsMatch(this.textBox2.Text.Trim(), valEx))
+                {
+                    MessageBox.Show("Please enter only numerical characters.");
+                    return;
+                }
+                calculateOrderTotal();
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages[2])
+            {
+                string valEx = @"^[0-9]+$";
+                if (!Regex.IsMatch(this.textBox2.Text.Trim(), valEx))
+                {
+                    MessageBox.Show("Please enter only numerical characters.");
+                    return;
+                }
+                calculateOrderTotal();
+            }
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages[2])
+            {
+                string valEx = @"^[0-9]+$";
+                if (!Regex.IsMatch(this.textBox2.Text.Trim(), valEx))
+                {
+                    MessageBox.Show("Please enter only numerical characters.");
+                    return;
+                }
+                calculateOrderTotal();
+            }
+        }
+
+        private void textBox5_TextChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages[2])
+            {
+                string valEx = @"^[0-9]+$";
+                if (!Regex.IsMatch(this.textBox2.Text.Trim(), valEx))
+                {
+                    MessageBox.Show("Please enter only numerical characters.");
+                    return;
+                }
+                calculateOrderTotal();
+            }
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabControl1.TabPages[2])
+            {
+                string valEx = @"^[0-9]+$";
+                if (!Regex.IsMatch(this.textBox2.Text.Trim(), valEx))
+                {
+                    MessageBox.Show("Please enter only numerical characters.");
+                    return;
+                }
+                calculateOrderTotal();
+            }
+        }
+
     }
 }

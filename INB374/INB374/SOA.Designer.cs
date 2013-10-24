@@ -66,7 +66,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.recalculateTotal = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.confirmOrder = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
@@ -328,9 +327,9 @@
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(388, 17);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(51, 13);
+            this.label38.Size = new System.Drawing.Size(61, 13);
             this.label38.TabIndex = 15;
-            this.label38.Text = "Customer";
+            this.label38.Text = "Customer #";
             // 
             // customerContextBox
             // 
@@ -477,7 +476,6 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.recalculateTotal);
             this.tabPage3.Controls.Add(this.label39);
             this.tabPage3.Controls.Add(this.confirmOrder);
             this.tabPage3.Controls.Add(this.label37);
@@ -520,16 +518,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Order Confirm";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // recalculateTotal
-            // 
-            this.recalculateTotal.Location = new System.Drawing.Point(389, 271);
-            this.recalculateTotal.Name = "recalculateTotal";
-            this.recalculateTotal.Size = new System.Drawing.Size(75, 23);
-            this.recalculateTotal.TabIndex = 35;
-            this.recalculateTotal.Text = "Recalculate";
-            this.recalculateTotal.UseVisualStyleBackColor = true;
-            this.recalculateTotal.Click += new System.EventHandler(this.recalculateTotal_Click);
             // 
             // label39
             // 
@@ -594,6 +582,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(57, 20);
             this.textBox6.TabIndex = 28;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // comboBox11
             // 
@@ -638,6 +627,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(57, 20);
             this.textBox5.TabIndex = 23;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // comboBox10
             // 
@@ -682,6 +672,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(57, 20);
             this.textBox4.TabIndex = 18;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // comboBox9
             // 
@@ -726,6 +717,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(57, 20);
             this.textBox3.TabIndex = 13;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // comboBox8
             // 
@@ -780,6 +772,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(57, 20);
             this.textBox2.TabIndex = 7;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // comboBox7
             // 
@@ -945,7 +938,6 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label customerAddStatus;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Button recalculateTotal;
     }
 }
 
