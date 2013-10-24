@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>INB374</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class='wrapper'>
+        <header>
+        <h2>INB374 Service Repo</h2>
+        <nav>
+            <ul id="navlist">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="orderService.html">Order</a></li>
+                <li><a href="supplierService.html">Supplier</a></li>
+                <li><a href="warehouseService.html">Warehouse</a></li>
+                <li><a href="productService.html">Product & Customer</a></li>
+            </ul>
+        </nav>
+        </header>
+        <div>
+            <h3>Warehouse</h3>
+            <p class="normText">
+                The warehouse service is a WSDL based web service that allows the sales team to interact with the warehouse. The service can be found
+            <a href="http://fastapps04.qut.edu.au/n8510873/warehouseService/warehouseWebService.asmx">here</a>, its associated WSDL file <a href="http://fastapps04.qut.edu.au/n8510873/warehouseService/warehouseWebService.asmx?WSDL">here</a>.
+            </p>
+            <h4>Functionality</h4>
+            <h5>getWaitTime</h5>
+            <p class='funcDes'>
+                Returns the delivery time of stock to the store.
+            </p>
+            <h5>getSupplierWaitTime</h5>
+            <p class='funcDes'>
+                Returns the delivery time of stock from the supplier to the warehouse.
+            </p>
+            <h5>orderStock</h5>
+            <p class='funcDes'>
+                Iterates through the warehouse and re stocks any item with a stock level below three.
+            </p>
+        </div>
+        <footer>
+            <p>Copyright &copy; <em>Joe Maher</em> and <em>Connor Livsey</em> 2013.</p>
+        </footer>
+    </div>
+</body>
+</html>

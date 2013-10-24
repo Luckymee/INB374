@@ -1,0 +1,128 @@
+* {
+        margin:0;
+        padding:0;
+}
+
+body {
+        font-family:Arial, Helvetica, sans-serif;
+        font-size:12px;
+        margin: 0;
+        padding: 0;
+        color: #535e65;
+}
+
+header {
+}
+
+header h2 {
+        color:#5789bb;
+        padding:30px 0;
+}
+
+.funcDes {
+        margin-left:30px;
+}
+
+.normText{
+    font-size:15px;
+}
+p {
+        margin-top: 10px;
+        margin-bottom:10px;
+        padding-left:15px;
+        padding-right:15px;
+}
+
+a {
+        color: #5789bb;
+        text-decoration: underline;
+}
+
+a:hover, a:active, a:focus {
+        color:#5789bb;
+        text-decoration: none;
+}
+
+footer {
+        padding: 10px 0;
+        position: relative;
+        clear: both;
+        margin-top:20px;
+        border-top:1px solid #7d7d7d;
+        text-align:center;
+}
+
+.wrapper {
+        width: 900px;
+        margin: 0 auto;
+}
+
+nav ul {
+        padding-left: 0;
+        margin:1px 0 7px 0;
+        background-color: #d9d9d9;
+        float: left;
+        width: 100%;
+        font-size:20px;
+        border-radius:5px;
+}
+nav ul li {
+        display: inline;
+}
+nav ul li a {
+        padding: 10px 44px;
+        background-color: #d9d9d9;
+        color: #333333;
+        text-decoration: none;
+        float: left;
+        border-radius:5px;
+}
+nav ul li a:hover {
+        background-color: #5789bb;
+        color: #fff;
+}
+nav ul #active a {
+        background-color: #5789bb;
+        color: #fff;
+}
+
+h2 {
+        margin-top: 0;
+        color: #5789bb;
+        font-size:35px;
+        font-weight:normal;
+        padding-left:15px;
+        padding-right:15px;
+}
+
+h3 {
+        color: #5789bb;
+        font-size:30px;
+        font-weight:normal;
+        padding-left:15px;
+        padding-right:15px;
+        padding-top:60px;
+}
+
+h4 {
+        margin-top: 0;
+        color: #5789bb;
+        font-size:20px;
+        font-weight:normal;
+        padding-left:20px;
+        padding-right:15px;
+        margin-bottom:10px;
+}
+
+h5 {
+        margin-top: 0;
+        color: #5789bb;
+        font-size:15px;
+        font-weight:normal;
+        padding-left:30px;
+        padding-right:15px;
+}
+
+.names {
+        margin-left:50px;
+}
